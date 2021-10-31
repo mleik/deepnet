@@ -1,3 +1,0 @@
-# How we work
-
-TODO
