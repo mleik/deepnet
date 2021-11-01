@@ -1,4 +1,4 @@
-# EIT DeepNet
+# DeepNet
 
 ## Overview
 
@@ -25,13 +25,6 @@ It is a cross-disciplinary effort that involve
 - Connecting all of this new stuff to Equinor networks
 - And the software to bring them all and in Omnia bind them
 
-**This repo is focused on the software component of DeepNet**
-
-See [end-to-end functional diagrams](./docs/diagrams/end-to-end/functional) for more info. 
-
-![DeepNet functional diagrams - 1 - DeepNet Top Level Overview](./docs/diagrams/end-to-end/functional/DeepNet%20end-to-end%20functional%20diagrams%20-%201%20-%20DeepNet%20Top%20Level%20Overview.png)
-
-
 ## Table of contents
 
 ### For developers
@@ -40,138 +33,35 @@ See [end-to-end functional diagrams](./docs/diagrams/end-to-end/functional) for 
 - [Components](#components)
 - [Security](#security)
 - [Development](#development)
-- [Documentation](./docs/README.md)
-  - [Diagrams](./docs/diagrams/)
-- [Documentation for Equinor](https://github.com/equinor/deepnet-internal/) - Internal docs for implementation in Equinor
-
-### For users
-
-Todo
-
 
 ## Technologies
 
-### Physical  
+### Physical
 
 Offshore and subsea devices at a DeepNet Site
 
 - **Subsea Docking Station (SDS)**
-  - Switch  
+  - Switch
     Provide network between topside and SDS components
-  - [Connectors](https://www.bluelogic.no/products/electrical-interfaces/subsea-usb-c-01-500-3000w-)  
+  - [Connectors](https://www.bluelogic.no/products/electrical-interfaces/subsea-usb-c-01-500-3000w-)
     Provide
     - Induction charging (MVP)
-    - Close proximity wifi (when drone is docked) (one router in each connector part) (MVP)   
+    - Close proximity wifi (when drone is docked) (one router in each connector part) (MVP)
   - Optical modems (future)
   - Acoustic modems (future)
 
-- **Edge computer**    
-  ("Edge" = located at a DeepNet Site)  
+- **Edge computer**
+  ("Edge" = located at a DeepNet Site)
   Topside host for
   - DeepNet Site software
   - SDS control software
   - Have room for additional services as needed
 
-- **DeepNet Site Firewall + switch**  
-  Control drone networks in a DeepNet Site
-  
+### Digital
 
-### Digital  
-
-- **Omnia**  
+- **Omnia**
   For upload of drone data to a yet to be determined location(s)
   - **SLIMM**
 
-- **[Radix](https://www.radix.equinor.com/)**  
-  Host DeepNet Operator software 
-
-- **[Kernel Virtual Machine (KVM)](https://www.linux-kvm.org/)**  
+- **[Kernel Virtual Machine (KVM)](https://www.linux-kvm.org/)**
   The VM layer that enable the Edge Computer to host all DeepNet Site software and SDS Control software in VMs
-
-- **Virtual networks**  
-  To isolate drone communications when possible to do so.  
-  Specific technology is yet to be determined.
-
-- **Network tunnel**  
-  Tunnel between Vendor and DeepNet Operator.  
-  Specific technology is yet to be determined.
-
-- **Bastion**  
-  A server that acts like a bridge bewteen internal and external networks.  
-  Handle connection between drone from DeepNet Site to Vendor on internet.  
-
-- **[Rust and Python](./docs/why-rust.md)**
-
-## Components
-
-- **DeepNet Operator**  
-
-  A hub for multiple DeepNet Sites.  
-  This is where users (humans) go so they can interact with drones.  
-  It is the golden source for DeepNet Configs, which is also the state for each DeepNet Site.  
-  A DeepNet Operator never calls a DeepNet Site, it is always a Site that connects to an Operator.  
-
-  The software components are:
-
-  - Internal API (for DeepNet Sites)
-  - External API (for users)
-  - State Manager
-  - Connection Manager
-  - Bastion
-  - Operator Service
-  - Site Service
-  - Vendor Service
-
-
-- **DeepNet Site**  
-
-  A hub for device network and services at a location.  
-  This is where drones go so that they can get access to network and services at that location.  
-  A DeepNet Site request latest Site state (configs) from the DeepNet Operator at regular intervals.
-  
-  The software components are:
-
-  - **DeepNet Site Services**  
-    The software that interacts with drones.  
-
-    - External API (for drones)
-    - Network Manager
-    - State Manager
-    - Authentication Service
-    - Charging Service (request charging from SDS Control on behalf of a drone)
-    - Data Service (a helper API where drones can upload data to a location in Omnia)
-
-  - **SDS Control**  
-    The software (provided by SDS vendor) that controls the Subsea Docking Station(s) at a DeepNet Site.  
-
-
-
-## Security
-
-ToDo
-
-### Authentication
-
-- ToDo
-
-### Network
-
-- ToDo
-
-### Credentials & Secrets
-
-- Credentials
-- Secrets
-- Storage (where)
-
-
-## CICD
-
-ToDo
-
-
-## Development
-
-TODO - How to develop DeepNet etc.
-
-- [Rust Style Guide](./docs/rust-style.md)
