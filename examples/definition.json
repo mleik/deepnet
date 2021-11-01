@@ -1,0 +1,5 @@
+{
+    "MissionId": "string",
+    "Position": "array(float)",
+    "Orientation":"array(float)"
+}

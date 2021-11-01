@@ -32,7 +32,7 @@ It is a cross-disciplinary effort that involve
 - [Technologies](#Technologies)
 - [Components](#components)
 - [Security](#security)
-- [Development](#development)
+- [Development](#Development)
 
 ## Technologies
 
@@ -41,6 +41,7 @@ It is a cross-disciplinary effort that involve
 Offshore and subsea devices at a DeepNet Site
 
 - **Subsea Docking Station (SDS)**
+
   - Switch
     Provide network between topside and SDS components
   - [Connectors](https://www.bluelogic.no/products/electrical-interfaces/subsea-usb-c-01-500-3000w-)
@@ -61,7 +62,14 @@ Offshore and subsea devices at a DeepNet Site
 
 - **Omnia**
   For upload of drone data to a yet to be determined location(s)
+
   - **SLIMM**
 
 - **[Kernel Virtual Machine (KVM)](https://www.linux-kvm.org/)**
   The VM layer that enable the Edge Computer to host all DeepNet Site software and SDS Control software in VMs
+
+## Development
+
+Deepnet is still in Early development, and the data structures present in this repository are subject to change. Examples of data transmission and data objects will be kept open source. We therefore encourage you to engage in its development and create pull requests or issues if you have any suggestions for the Deepnet project.
+
+Examples of sent JSON objects and other example scripts can be found [here](examples)
